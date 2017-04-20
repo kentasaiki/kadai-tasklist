@@ -1,0 +1,6 @@
+<h1>id = <%= @tasky.id %> のタスク詳細ページ</h1>
+
+<p><%= @tasky.content %></p>
+<%= link_to '一覧に戻る', taskies_path %>
+<%= link_to 'このタスクを編集する', edit_tasky_path(@tasky) %>
+
