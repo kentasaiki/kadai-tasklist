@@ -14,7 +14,7 @@ class TaskiesController < ApplicationController
   def create
     @tasky = Tasky.new(tasky_params)
 
-    if @message.save
+    if @tasky.save
       flash[:success] = 'タスク が正常に投稿されました'
       redirect_to @tasky
     else
@@ -28,9 +28,23 @@ class TaskiesController < ApplicationController
   end
 
   def update
+    @tasky = Tasky.find(params[:id])
+
+    if @tasky.update(tasky_params)
+      flash[:success] = 'タスクは正常に更新されました'
+      redirect_to @tasky
+    else
+      flash.now[:danger] = 'タスクは更新されませんでした'
+      render :edit
+    end
   end
 
   def destroy
+    @tasky = Tasky.find(params[:id])
+    @tasky.destroy
+
+    flash[:success] = 'タスクは正常に削除されました'
+    redirect_to taskies_url
   end
   
    # Strong Parameter
