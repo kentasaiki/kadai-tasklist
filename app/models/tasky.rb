@@ -1,0 +1,2 @@
+class Tasky < ApplicationRecord
+end
