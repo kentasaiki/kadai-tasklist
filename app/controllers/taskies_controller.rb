@@ -1,10 +1,11 @@
 class TaskiesController < ApplicationController
+  before_action :set_message, only: [:show, :edit, :update, :destroy]
+  
   def index
     @taskies = Tasky.all
   end
 
   def show
-    @tasky = Tasky.find(params[:id])
   end
 
   def new
@@ -24,12 +25,9 @@ class TaskiesController < ApplicationController
   end
 
   def edit
-    @tasky = Tasky.find(params[:id])
   end
 
   def update
-    @tasky = Tasky.find(params[:id])
-
     if @tasky.update(tasky_params)
       flash[:success] = 'タスクは正常に更新されました'
       redirect_to @tasky
@@ -40,16 +38,19 @@ class TaskiesController < ApplicationController
   end
 
   def destroy
-    @tasky = Tasky.find(params[:id])
     @tasky.destroy
 
     flash[:success] = 'タスクは正常に削除されました'
     redirect_to taskies_url
   end
   
-   # Strong Parameter
+  private
+
+  def set_tasky
+    @tasky = Tasky.find(params[:id])
+  end
+
   def tasky_params
     params.require(:tasky).permit(:content)
   end
 end
-
