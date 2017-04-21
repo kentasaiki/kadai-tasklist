@@ -1,8 +1,8 @@
 <h1>id = <%= @tasky.id %> のメッセージ詳細ページ</h1>
 
-<p>タイトル: <%= @tasky.title %></p>
-<p>メッセージ: <%= @tasky.content %></p>
+<p>ステータス: <%= @tasky.status %></p>
+<p>タスク: <%= @tasky.content %></p>
 
 <%= link_to '一覧に戻る', taskies_path %>
-<%= link_to 'このメッセージを編集する', edit_tasky_path(@tasky) %>
-<%= link_to 'このメッセージを削除する', @tasky, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+<%= link_to 'このタスクを編集する', edit_tasky_path(@tasky) %>
+<%= link_to 'このタスクを削除する', @tasky, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>

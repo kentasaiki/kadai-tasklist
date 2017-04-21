@@ -1,5 +1,5 @@
 class TaskiesController < ApplicationController
-  before_action :set_message, only: [:show, :edit, :update, :destroy]
+  before_action :set_tasky, only: [:show, :edit, :update, :destroy]
   
   def index
     @taskies = Tasky.all
@@ -51,6 +51,6 @@ class TaskiesController < ApplicationController
   end
 
   def tasky_params
-    params.require(:tasky).permit(:content)
+    params.require(:tasky).permit(:content, :status)
   end
 end
