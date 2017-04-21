@@ -2,7 +2,7 @@
   <% if tasky.errors.any? %>
     <div id="error_explanation">
       <ul>
-        <% tasky.errors.full_taskies.each do |tasky| %>
+        <% tasky.errors.full_messages.each do |tasky| %>
           <li><%= tasky %></li>
         <% end %>
       </ul>
