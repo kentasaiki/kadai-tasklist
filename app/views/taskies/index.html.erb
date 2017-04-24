@@ -1,9 +1,27 @@
 <h1>タスク一覧</h1>
 
-<ul>
-  <% @taskies.each do |tasky| %>
-    <li><%= link_to tasky.id, tasky %> : <%= tasky.status %> > <%= tasky.content %></li>
-  <% end %>
-</ul>
+<% if @taskies.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>ステータス</th>
+        <th>タスク</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @taskies.each do |tasky| %>
+        <tr>
+          <td><%= link_to tasky.id, tasky %></td>
+          <td><%= tasky.status %></td>
+          <td><%= tasky.content %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div>
+    <%= paginate @taskies %>
+  </div>
+<% end %>
 
-<%= link_to '新規タスクの投稿', new_tasky_path %>
+<%= link_to '新規タスクの投稿', new_tasky_path, class: "btn btn-primary" %>

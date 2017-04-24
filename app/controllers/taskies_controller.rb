@@ -2,7 +2,7 @@ class TaskiesController < ApplicationController
   before_action :set_tasky, only: [:show, :edit, :update, :destroy]
   
   def index
-    @taskies = Tasky.all
+    @taskies = Tasky.order(created_at: :desc).page(params[:page]).per(3)
   end
 
   def show
